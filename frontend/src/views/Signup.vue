@@ -170,7 +170,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../store/auth";
-import axios from "axios";
+import api from "../services/api";
 
 const router = useRouter();
 const authStore = useAuthStore();
@@ -188,7 +188,7 @@ const message = ref("");
 
 const handleSignup = async () => {
   try {
-    const res = await axios.post("http://localhost:5000/api/auth/signup", {
+    const res = await api.post("/auth/signup", {
       email: email.value,
       password: password.value,
       role: role.value,
